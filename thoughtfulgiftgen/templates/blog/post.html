@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{post.title}}{% endblock %}
+ 
+{% block content %}
+
+{% comment %}
+highlight selected post tab
+{% endcomment %}
+
+<div class="tabcontainer">
+    {% for post in posts %}
+
+		{% if post.slug == current_slug %}
+			<a class="button" id="selectedtab" href="{{post.get_absolute_url}}">
+				{{post.title}}
+			</a>
+		{% else %}
+			<a class="button" href="{{post.get_absolute_url}}">
+				{{post.title}}
+			</a>	
+		{% endif %}
+<!-- 		{% if post.slug != current_slug and "a." or "b." in post.title %}
+			<a class="button" href="{{post.get_absolute_url}}">
+				{{post.title}}
+			</a>
+		{% else %}
+			<a class="button" id="selectedtab" href="{{post.get_absolute_url}}">
+				{{post.title}}
+			</a>
+		{% endif %} -->
+   
+    {% endfor %}
+</div>
+<div class="post-container">
+	<article>
+	    <div>
+	        <h1>{{post.description}}</h1>
+	    </div>
+	    {{post.content|safe}}  
+	</article>
+	<div id="timestamp">
+	    Posted on
+	    <time datetime="{{post.created|date:"c"}}">
+	    {{post.created|date}}
+	    </time> 
+	</div>  
+</div>
+
+{% endblock %}

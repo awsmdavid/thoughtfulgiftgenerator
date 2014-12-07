@@ -1,0 +1,79 @@
+<!--
+TODO:
+- maybe make this page into a dashboard with tickers and graphs?
+-->
+
+
+{% extends 'base.html' %}
+ 
+ 
+{% block title %} Home {% endblock %}
+ 
+{% block content %}
+<div class="tabcontainer">
+    {% for post in posts %}
+        <a class="button" id="{{post.get_absolute_url}}" href="{{post.get_absolute_url}}">
+            {{post.title}}
+        </a>
+    {% endfor %}
+</div>
+<div>
+    <!--try to loop through post labels-->
+    <div class="tabcontent">
+        {% for post in posts %}
+        <h1>{{post.description}}</h1>
+        <p>{{post.content|safe}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+<!--
+or 
+
+Need to change views.py to access this, currently bypassing and routing to post.html for both requests
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+ 
+{% block content %}
+
+{% comment %}
+highlight selected post tab
+{% endcomment %}
+
+<div class="tabcontainer">
+    {% for post in posts %}
+
+        {% if post.slug == current_slug %}
+        <a class="button" id="selectedtab" href="{{post.get_absolute_url}}">
+            {{post.title}}
+        </a>
+        {% elif post.slug != slug %}
+        <a class="button" href="{{post.get_absolute_url}}">
+            {{post.title}}
+        </a>    
+        {% endif %}
+   
+    {% endfor %}
+</div>
+<div class="post-container">
+    <article>
+        <div>
+            <h1>{{post.description}}</h1>
+        </div>
+        {{post.content|safe}}  
+    </article>
+    <div id="timestamp">
+        Posted on
+        <time datetime="{{post.created|date:"c"}}">
+        {{post.created|date}}
+        </time> 
+    </div>  
+</div>
+
+{% endblock %}
+
+-->

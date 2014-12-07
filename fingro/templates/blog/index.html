@@ -1,0 +1,52 @@
+<!--
+TODO:
+- maybe make this page into a dashboard with tickers and graphs?
+-->
+
+
+{% extends 'base.html' %}
+ 
+ 
+{% block title %} Home {% endblock %}
+ 
+{% block content %}
+<section class="description">
+    this is what you should do
+</section>
+<section id="gender" class="grid-half">
+    <div class="section-title">
+        Gender:
+    </div>
+    <a>
+        <img src="{{STATIC_URL}}female.png" width="50px" height="150px">
+    </a>
+    <a>
+        <img src="{{STATIC_URL}}male.png" width="50px" height="150px">
+    </a>
+</section>
+<section id="age" class="grid-half">
+    <div class="section-title">
+        Age:
+    </div>
+    <div>
+        Select Age
+        <span class="submit-field">
+            <select name="fileType">
+                <option value=1>1</option>
+                <option value=2>2</option>
+            </select>
+        </span>
+    </div>
+</section>
+<section id="hobbies" class="grid-full">
+    <div class="section-title">
+        Hobbies:
+    </div>
+    <div>
+        sports, active, 
+</section>
+<section class="grid-full">
+    <p><input class="submit-button" type="submit" value="Submit!" /></p>
+</section>
+
+{% endblock %}

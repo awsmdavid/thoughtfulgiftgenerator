@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<!--         <link rel="stylesheet" type="text/css" href="http://davcheng.com/static/misc/style.css"> -->
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style.css">
+		<link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
+        <title>
+            FinancialGro - {% block title %}{% endblock %}
+        </title>
+        <link rel="icon" type="image/jpg" href="http://davcheng.com/static/misc/financialgro-logo.jpg">
+        </head>
+
+    <body>
+    	<div class="header-bar">
+			<a id="logo" href="/">FinancialGro
+
+				<img id="logo-img" src="http://davcheng.com/static/misc/financialgro-logo.jpg"></img>
+			</a>
+    	</div>
+    	<header>
+
+			<a id="tagline">make it rain from the ground up</a>
+  		</header>
+
+        <div class="content">
+
+	            {% block content %}
+
+	            {% endblock %}
+	    </div>
+
+        </div>
+    </body>
+</html> 
