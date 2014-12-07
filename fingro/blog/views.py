@@ -29,6 +29,7 @@ def post(request, slug):
     return render(request, 'blog/post.html', {'post': post, 'posts':posts, 'current_slug':slug})
 
 def results(request):
+	
 	return render(request, 'blog/results.html')
 
 # def submit(request):
