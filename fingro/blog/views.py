@@ -1,18 +1,22 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import GifteeDataForm
+from django.http import HttpResponseRedirect
 
 def index(request):
-    # render index
-    return render(request, 'blog/index.html')
+	return render(request, 'blog/index.html')
 
-def submit(request, gender, age, hobbies):
-	# if request.method == 'POST': # If the form has been submitted...
-	# 	if form.is_valid(): # All validation rules pass
-	# 		form.save()
-
-	# userdata = get_object_or_404(UserData, gender=gender, age=age, hobbies=hobbies)
-	return render(request, 'blog/results.html')
-	# return render(request, 'blog/results.html', {'userdata': userdata})
+# 	return render(request, 'blog/results.html')
+def submit(request):
+    if request.method == 'POST': # If the form has been submitted...
+    	form = GifteeDataForm(request.POST)
+        if form.is_valid(): 
+        	# form = GifteeDataForm(request.POST)
+        	instance = form.save(commit=False)
+        	instance.save()
+        return HttpResponseRedirect('/results/') # Redirect after POST
+    else:
+        form = GifteeDataForm() # An unbound form
+	return render(request, 'blog/index.html')
 
 def post(request, slug):
     # get the Post object

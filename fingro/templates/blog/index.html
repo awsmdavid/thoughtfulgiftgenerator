@@ -13,6 +13,7 @@ TODO:
 <section class="description">
     this is what you should do
 </section>
+<form class="submit-form" action="/submit/" method="post">{% csrf_token %}
 <section id="gender" class="grid-half">
     <div class="section-title">
         Gender:
@@ -48,5 +49,6 @@ TODO:
 <section class="grid-full">
     <p><input class="submit-button" type="submit" value="Submit!" /></p>
 </section>
+</form>
 
 {% endblock %}

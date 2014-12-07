@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
  
-gender = (
+GENDER_CHOICES = (
     ('M', 'Male'),
     ('F', 'Female'),
 )
@@ -23,10 +23,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog.views.post', args=[self.slug])
 
-# class UserData(models.Model):
-#     gender = models.CharField(max_length=6, choices=gender)
-#     age = models.IntegerField()
-#     hobbies = models.TextField()
+class GifteeDataForm(models.Model):
+    # gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+    age = models.IntegerField()
+    # hobbies = models.TextField()
 
 # class GifteeData(ModelForm):
 #     class Meta:
