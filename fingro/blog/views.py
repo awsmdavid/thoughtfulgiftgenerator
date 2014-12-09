@@ -7,30 +7,26 @@ def index(request):
 
 # 	return render(request, 'blog/results.html')
 def submit(request):
-    if request.method == 'POST': # If the form has been submitted...
-    	form = GifteeDataForm(request.POST)
-        if form.is_valid(): 
-        	# form = GifteeDataForm(request.POST)
-        	instance = form.save(commit=False)
-        	instance.save()
-        return HttpResponseRedirect('/results/') # Redirect after POST
-    else:
-        form = GifteeDataForm() # An unbound form
 	return render(request, 'blog/index.html')
 
 def post(request, slug):
     # get the Post object
     posts = Post.objects.filter(published=True)
-
     #return post and slug
     post = get_object_or_404(Post, slug=slug)
-
     # now return the rendered template
     return render(request, 'blog/post.html', {'post': post, 'posts':posts, 'current_slug':slug})
 
 def results(request):
-	
-	return render(request, 'blog/results.html')
+    if request.GET: # If the form has been submitted...
+    	gender = request.GET.get('gender')
+    	age = request.GET.get('age')
+    	priceMin = request.GET.get('priceMin')
+    	priceMax = request.GET.get('priceMax')
+        return render(request, 'blog/results.html', { 'gender': gender, 'age': age, 'priceMin': priceMin, 'priceMax':priceMax}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+	   #  inputData = GifteeDataForm(request.POST)
+	   #  return render(request, 'blog/results.html', {'inputData': inputData}) # Redirect after POST
+    return render(request, 'blog/index.html')
 
 # def submit(request):
 #     if request.method == 'POST': # If the form has been submitted...

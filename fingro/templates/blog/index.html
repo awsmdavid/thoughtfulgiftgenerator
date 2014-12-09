@@ -13,13 +13,17 @@ TODO:
 <section class="description">
     this is what you should do
 </section>
-<form class="submit-form" action="/submit/" method="post">{% csrf_token %}
+<form class="submit-form" action="/submit/" method="GET">{% csrf_token %}
 <section id="gender" class="grid-half">
     <div class="section-title">
         Gender:
     </div>
-    <input type="image" src="{{STATIC_URL}}female.png" width="50px" height="150px" value="female">
-    <input type="image" src="{{STATIC_URL}}male.png" width="50px" height="150px" value="male">
+    <img src="{{STATIC_URL}}female.png" width="50px" height="150px" value="female">
+    <img src="{{STATIC_URL}}male.png" width="50px" height="150px" value="male">
+            <select name="gender">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
 </section>
 <section id="age" class="grid-half">
     <div class="section-title">
@@ -40,8 +44,23 @@ TODO:
         Hobbies:
     </div>
     <div>
-        <input type="text">
-        sports, active, 
+            <select name="hobbies">
+                <option value=sports>sports</option>
+            </select>
+        sports, active, fashion, technology, music, home, 
+</section>
+<section id="amount" class="grid-full">
+    <div class="section-title">
+        Price Range?
+    </div>
+    <div>
+        Min:
+        <input type="text" name="priceMin" placeholder="let's not be a jerk">
+    </div>
+    <div>
+        Max:
+        <input type="text" name="priceMax" placeholder="let's not get to crazy">
+    </div>
 </section>
 <section class="grid-full">
     <p><input class="submit-button" type="submit" value="Submit!" /></p>

@@ -321,7 +321,11 @@ body{
   letter-spacing: 1px;
 }
 
-#gender,#age,#hobbies{
+#gender,#age{
+  height: 150px;
+}
+
+#hobbies{
   height: 225px;
 }
 /*.background-img-hood:hover, .background-img-oc:hover,.background-img-chelsea-pier:hover,.background-img-muir-woods:hover,.background-img-jap-garden:hover,.background-img-portland:hover,.background-img-london-bridge:hover,.background-img-lucerne:hover{

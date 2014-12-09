@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django import forms
+from django.forms import ModelForm
  
 GENDER_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female'),
+    ('Male', 'Male'),
+    ('Female', 'Female'),
 )
 
 class Post(models.Model):
@@ -23,10 +25,19 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog.views.post', args=[self.slug])
 
-class GifteeDataForm(models.Model):
-    # gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
+class GifteeDataForm(forms.Form):
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.IntegerField()
-    # hobbies = models.TextField()
+    #hobby category search terms
+    sports = models.BooleanField()
+    fashion = models.BooleanField()
+    active = models.BooleanField()
+    tech = models.BooleanField()
+    music = models.BooleanField()
+    games = models.BooleanField()
+    #price range
+    priceMin = models.IntegerField()
+    priceMax = models.IntegerField()
 
 # class GifteeData(ModelForm):
 #     class Meta:
