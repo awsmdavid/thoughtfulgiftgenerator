@@ -18,12 +18,11 @@ TODO:
     <div class="section-title">
         Gender:
     </div>
-    <img src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
-    <img src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
-            <select name="gender">
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-            </select>
+
+    <img class="gender_icon" id="gender_icon_female" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
+    <img class="gender_icon" id="gender_icon_male" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
+    <input id="gender_input" type="hidden" name="gender" />
+
 </section>
 <section id="age" class="grid-half">
     <div class="section-title">
@@ -32,10 +31,10 @@ TODO:
     <div>
         Select Age
         <span>
-            <img id="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px" value="age_1" >
-            <img id="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px" value="age_2">
-            <img id="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px" value="age_3">
-            <select name="age">
+            <img name="age" id="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <select name="age2">
                 <option value=1>1</option>
                 <option value=2>2</option>
             </select>

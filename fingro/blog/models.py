@@ -27,7 +27,7 @@ class Post(models.Model):
 
 class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    age = models.IntegerField()
+    age = models.CharField(max_length=10)
     #hobby category search terms
     sports = models.BooleanField()
     fashion = models.BooleanField()
