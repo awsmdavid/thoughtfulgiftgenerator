@@ -328,6 +328,15 @@ body{
 #category{
   height: 225px;
 }
+
+/*Image toggling*/
+img.on{
+  opacity: 1;
+}
+img.off{
+  opacity: .3;
+}
+
 /*.background-img-hood:hover, .background-img-oc:hover,.background-img-chelsea-pier:hover,.background-img-muir-woods:hover,.background-img-jap-garden:hover,.background-img-portland:hover,.background-img-london-bridge:hover,.background-img-lucerne:hover{
     height: 25%;
     width: 25%;
