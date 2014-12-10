@@ -19,8 +19,8 @@ TODO:
         Gender:
     </div>
 
-    <img class="gender_icon" id="gender_icon_female" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
-    <img class="gender_icon" id="gender_icon_male" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
+    <img class="gender_icon" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
+    <img class="gender_icon" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
     <input id="gender_input" type="hidden" name="gender" />
 
 </section>
@@ -31,28 +31,28 @@ TODO:
     <div>
         Select Age
         <span>
-            <img name="age" id="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <img id="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <img id="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <select name="age2">
-                <option value=1>1</option>
-                <option value=2>2</option>
-            </select>
+            <img class="age_icon" value="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img class="age_icon" value="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img class="age_icon" value="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img class="age_icon" value="age_4" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <input id="age_input" type="hidden" name="age" />
         </span>
     </div>
 </section>
-<section id="hobbies" class="grid-full">
+<section id="category" class="grid-full">
     <div class="section-title">
         Hobbies:
     </div>
     <div>
-        <img src="{{STATIC_URL}}img/technology.png" width="85px" value="technology">
-        <img src="{{STATIC_URL}}img/sports.png" width="85px" value="sports">
-        <img src="{{STATIC_URL}}img/travel.png" width="85px" value="travel">
-        <img src="{{STATIC_URL}}img/fashion.png" width="85px" value="fashion">
-            <select name="hobbies">
-                <option value=sports>sports</option>
-            </select>
+        <!-- TODO: wtf is this, fix this to have bool toggle buttons -->
+        <img class="category_icon" src="{{STATIC_URL}}img/technology.png" width="85px" value="technology">
+        <input id="category_input_tech" type="hidden" name="tech" />
+        <img class="category_icon" src="{{STATIC_URL}}img/sports.png" width="85px" value="sports">
+        <input id="category_input_sports" type="hidden" name="sports" />
+        <img class="category_icon" src="{{STATIC_URL}}img/travel.png" width="85px" value="travel">
+        <input id="category_input_travel" type="hidden" name="travel" />
+        <img class="category_icon" src="{{STATIC_URL}}img/fashion.png" width="85px" value="fashion">
+        <input id="category_input_fashion" type="hidden" name="fashion" />
         sports, active, fashion, technology, music, home, 
 </section>
 <section id="amount" class="grid-full">
