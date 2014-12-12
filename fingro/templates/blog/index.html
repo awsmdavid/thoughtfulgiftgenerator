@@ -19,8 +19,8 @@ TODO:
         Gender:
     </div>
 
-    <img class="gender_icon" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
-    <img class="gender_icon" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
+    <img id="female_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
+    <img id="male_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
     <input id="gender_input" type="hidden" name="gender" />
 
 </section>
@@ -29,12 +29,11 @@ TODO:
         Age:
     </div>
     <div>
-        Select Age
         <span>
-            <img class="age_icon" value="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <img class="age_icon" value="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <img class="age_icon" value="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
-            <img class="age_icon" value="age_4" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_1" class="age_icon" value="age_1" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_2" class="age_icon" value="age_2" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_3" class="age_icon" value="age_3" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
+            <img id="age_4" class="age_icon" value="age_4" src="{{STATIC_URL}}img/age_zero_to_five.png" width="85px">
             <input id="age_input" type="hidden" name="age" />
         </span>
     </div>
