@@ -29,12 +29,12 @@ class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.CharField(max_length=10)
     #hobby category search terms
-    sports = models.BooleanField()
-    fashion = models.BooleanField()
-    active = models.BooleanField()
-    tech = models.BooleanField()
-    music = models.BooleanField()
-    games = models.BooleanField()
+    sports_flag = models.BooleanField()
+    fashion_flag = models.BooleanField()
+    active_flag = models.BooleanField()
+    tech_flag = models.BooleanField()
+    music_flag = models.BooleanField()
+    games_flag = models.BooleanField()
     #price range
     priceMin = models.IntegerField()
     priceMax = models.IntegerField()
