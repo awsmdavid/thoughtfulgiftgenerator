@@ -23,7 +23,12 @@ def results(request):
     	age = request.GET.get('age')
     	priceMin = request.GET.get('priceMin')
     	priceMax = request.GET.get('priceMax')
-        return render(request, 'blog/results.html', { 'gender': gender, 'age': age, 'priceMin': priceMin, 'priceMax':priceMax}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+    	tech_flag = request.GET.get('tech_flag')
+    	sports_flag = request.GET.get('sports_flag')
+    	travel_flag = request.GET.get('travel_flag')
+    	fashion_flag = request.GET.get('fashion_flag')
+    	music_flag = request.GET.get('music_flag')   	
+        return render(request, 'blog/results.html', { 'gender': gender, 'age': age, 'priceMin': priceMin, 'priceMax':priceMax, 'tech_flag':tech_flag, 'sports_flag':sports_flag, 'travel_flag':travel_flag, 'fashion_flag':fashion_flag, 'music_flag':music_flag}) # Redirect after POST    # if request.POST: # If the form has been submitted...
 	   #  inputData = GifteeDataForm(request.POST)
 	   #  return render(request, 'blog/results.html', {'inputData': inputData}) # Redirect after POST
     return render(request, 'blog/index.html')

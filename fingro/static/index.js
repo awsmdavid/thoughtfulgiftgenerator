@@ -45,6 +45,8 @@ $(document).ready(function() {
   $('.category_icon').click(function(){
     var $this = $(this);
     var $category_icon_class = $('.category_icon');
+    $('#category_input_tech').val(true);
+      $('#category_input_sports').val(false);
     if ($(this).hasClass('off')) {
       $this.removeClass('off');
       $this.addClass('on');
@@ -56,6 +58,6 @@ $(document).ready(function() {
       $(this).addClass('on');
     }
   });
-      $('#category_input_tech').val($this.attr('value'));
+
 
 });
