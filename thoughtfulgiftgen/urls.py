@@ -8,8 +8,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'fingro.views.home', name='home'),
-    # url(r'^fingro/', include('fingro.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -19,7 +17,6 @@ urlpatterns = patterns('',
 	url(r'^results/', 'blog.views.results'),
 	url(r'^submit/', 'blog.views.results'),
 	url(r'^$', 'blog.views.index'),
-    # url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
 
 
 )
