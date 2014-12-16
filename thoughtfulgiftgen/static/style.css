@@ -159,6 +159,12 @@ a:active {
   padding-left: 1%;
 }
 
+.gift-result-title{
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 2%;
+}
+
 /*
 can remove, this is for white rounded border
 .grid-fourth{

@@ -8,22 +8,29 @@ GENDER_CHOICES = (
     ('Female', 'Female'),
 )
 
-class Post(models.Model):
+class GiftIdea(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
+    age_min = models.IntegerField()
+    age_max = models.IntegerField()
+    target_gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    # price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=255)
-    content = models.TextField()
+    product_link = models.CharField(max_length=255)
+    image_link = models.CharField(max_length=255)
+    upvote = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True)
  
-    class Meta:
-        ordering = ['created']
+    # match percent?
+    # class Meta:
+    #     ordering = ['created']
  
     def __unicode__(self):
         return u'%s' % self.title
  
     def get_absolute_url(self):
-        return reverse('blog.views.post', args=[self.slug])
+        return reverse('blog.views.gift', args=[self.slug])
 
 class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)

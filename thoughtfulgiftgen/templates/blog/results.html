@@ -13,6 +13,9 @@
 		it is under {{priceMax}} so you don't have to worry!
 	</p>
 	<p>
+		Here is your "hand"-picked result:
+	</p>
+<!-- 	<p>
 		categories selected
 	</p>
 	<p>
@@ -29,7 +32,18 @@
 	</p>
 	<p>
 		music:{{music_flag}}
-	</p>
+	</p> -->
 </div>
+	{% for giftIdea in gift_idea_result %}
+        <div class="gift-result-title">
+        {{giftIdea.title}}
+    	</div>
+    	<div>
+        <img src={{giftIdea.image_link}} width="300px">
+    	</div>
+    	<div>
+        {{giftIdea.product_link}}
+    	</div>
+    {% endfor %}
 
 {% endblock %}
