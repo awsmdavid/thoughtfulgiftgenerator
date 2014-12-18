@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import GifteeDataForm, GiftIdea
+from blog.models import GiftIdea, GifteeDataForm
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 def index(request):
 	return render(request, 'blog/index.html')
@@ -11,17 +12,21 @@ def submit(request):
 
 def results(request):
     if request.GET: # If the form has been submitted...
-    	gender = request.GET.get('gender')
-    	age = request.GET.get('age')
-    	priceMin = request.GET.get('priceMin')
-    	priceMax = request.GET.get('priceMax')
-    	tech_flag = request.GET.get('tech_flag')
-    	sports_flag = request.GET.get('sports_flag')
-    	travel_flag = request.GET.get('travel_flag')
-    	fashion_flag = request.GET.get('fashion_flag')
-    	music_flag = request.GET.get('music_flag')
+    	gifteeDataForm = GifteeDataForm
+        gifteeDataForm.gender = request.GET.get('gender')
+    	gifteeDataForm.age = request.GET.get('age')
+    	gifteeDataForm.priceMin = request.GET.get('priceMin')
+    	gifteeDataForm.priceMax = request.GET.get('priceMax')
+    	gifteeDataForm.tech_flag = request.GET.get('tech_flag')
+    	gifteeDataForm.sports_flag = request.GET.get('sports_flag')
+    	gifteeDataForm.travel_flag = request.GET.get('travel_flag')
+    	gifteeDataForm.fashion_flag = request.GET.get('fashion_flag')
+    	gifteeDataForm.music_flag = request.GET.get('music_flag')
+        gifteeDataForm.tags = 2
         gift_idea_result = GiftIdea.objects.filter(published=True)
-        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gender': gender, 'age': age, 'priceMin': priceMin, 'priceMax':priceMax, 'tech_flag':tech_flag, 'sports_flag':sports_flag, 'travel_flag':travel_flag, 'fashion_flag':fashion_flag, 'music_flag':music_flag}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+
+        # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
+        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
 	   #  inputData = GifteeDataForm(request.POST)
 	   #  return render(request, 'blog/results.html', {'inputData': inputData}) # Redirect after POST
     return render(request, 'blog/index.html')

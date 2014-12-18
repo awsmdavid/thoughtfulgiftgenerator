@@ -14,10 +14,11 @@ class GiftIdea(models.Model):
     age_min = models.IntegerField()
     age_max = models.IntegerField()
     target_gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    # price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=255)
     product_link = models.CharField(max_length=255)
     image_link = models.CharField(max_length=255)
+    tags = models.CharField(max_length=255, blank=True, null=True)
     upvote = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
@@ -35,6 +36,9 @@ class GiftIdea(models.Model):
 class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.CharField(max_length=10)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    tags = models.CharField(max_length=255, blank=True, null=True)
+    upvote = models.IntegerField(default=0)
     #hobby category search terms
     sports_flag = models.BooleanField()
     fashion_flag = models.BooleanField()
