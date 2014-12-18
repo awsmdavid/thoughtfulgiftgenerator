@@ -19,6 +19,14 @@ class GiftIdea(models.Model):
     product_link = models.CharField(max_length=255)
     image_link = models.CharField(max_length=255)
     tags = models.CharField(max_length=255, blank=True, null=True)
+    #hobby flags
+    fashion_flag = models.BooleanField()
+    active_flag = models.BooleanField()
+    tech_flag = models.BooleanField()
+    music_flag = models.BooleanField()
+    games_flag = models.BooleanField()
+    sports_flag = models.BooleanField()
+
     upvote = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
