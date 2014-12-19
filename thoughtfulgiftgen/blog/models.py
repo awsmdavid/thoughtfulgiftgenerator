@@ -29,7 +29,10 @@ class GiftIdea(models.Model):
     upvote = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
- 
+    
+    @property
+    def gift_match_rank(self):
+        return self._do_calculation(self.model_field)
     # match percent?
     # class Meta:
     #     ordering = ['created']

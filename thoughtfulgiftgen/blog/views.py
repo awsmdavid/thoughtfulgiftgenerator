@@ -22,18 +22,16 @@ def results(request):
     	gifteeDataForm.fashion_flag = request.GET.get('fashion_flag')
     	gifteeDataForm.music_flag = request.GET.get('music_flag')
         gifteeDataForm.home_flag = request.GET.get('home_flag')
-        gift_idea_result = GiftIdea.objects.filter(published=True, target_gender=gifteeDataForm.gender, fashion_flag="True")
-
+        gift_idea_result = GiftIdea.objects.filter(published=True, target_gender=gifteeDataForm.gender)[:1]
+        # TODO: add age, price, and categories
 
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
-	   #  inputData = GifteeDataForm(request.POST)
-	   #  return render(request, 'blog/results.html', {'inputData': inputData}) # Redirect after POST
     return render(request, 'blog/index.html')
 
 def gift(request):
     # get the Post object
-    giftIdea = get_object_or_404(GiftIDea, slug=slug)
+    giftIdea = get_object_or_404(GiftIdea, slug=slug)
     # widget_posts = Post.objects.filter(published=True).exclude(slug=slug).order_by('?')[:5]
     # now return the rendered template
     return render(request)
