@@ -18,14 +18,13 @@ class GiftIdea(models.Model):
     description = models.CharField(max_length=255)
     product_link = models.CharField(max_length=255)
     image_link = models.CharField(max_length=255)
-    tags = models.CharField(max_length=255, blank=True, null=True)
     #hobby flags
-    fashion_flag = models.BooleanField()
-    active_flag = models.BooleanField()
     tech_flag = models.BooleanField()
+    fitness_flag = models.BooleanField()
+    fashion_flag = models.BooleanField()
+    travel_flag = models.BooleanField()
     music_flag = models.BooleanField()
-    games_flag = models.BooleanField()
-    sports_flag = models.BooleanField()
+    home_flag = models.BooleanField()
 
     upvote = models.IntegerField(default=0)
     published = models.BooleanField(default=True)
@@ -44,7 +43,6 @@ class GiftIdea(models.Model):
 class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.CharField(max_length=10)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
     tags = models.CharField(max_length=255, blank=True, null=True)
     upvote = models.IntegerField(default=0)
     #hobby category search terms
@@ -55,8 +53,7 @@ class GifteeDataForm(forms.Form):
     music_flag = models.BooleanField()
     games_flag = models.BooleanField()
     #price range
-    priceMin = models.IntegerField()
-    priceMax = models.IntegerField()
+    price = models.CharField(max_length=10)
 
 # class GifteeData(ModelForm):
 #     class Meta:

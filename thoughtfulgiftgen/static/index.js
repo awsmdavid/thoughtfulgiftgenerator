@@ -41,21 +41,40 @@ $(document).ready(function() {
     $('#age_input').val($this.attr('value'));
   });
 
+  //price input selector using images
+  $('.price_icon').click(function(){
+    var $this = $(this);
+    var $age_icon_class = $('.price_icon');
+    //if another input is already selected
+    if ($(this).hasClass('off')){
+     $this.removeClass('off');
+     $this.addClass('on');
+     $age_icon_class.not("#"+$this.attr("id")).removeClass('on').addClass('off');
+    }
+    //first time any option is selected (nothing has a class)
+    else {
+     $age_icon_class.not("#"+$this.attr("id")).addClass('off');
+     $this.addClass('on');
+    }
+    $('#price_input').val($this.attr('value'));
+  });
+
   //gift category input selector using images
   $('.category_icon').click(function(){
     var $this = $(this);
     var $category_icon_class = $('.category_icon');
-    $('#category_input_tech').val(true);
-      $('#category_input_sports').val(false);
     if ($(this).hasClass('off')) {
       $this.removeClass('off');
       $this.addClass('on');
+      $("#"+$this.attr('id')+'_input').val("True");
     }else if ($(this).hasClass('on'))  {
       $(this).removeClass('on').addClass('off');
+      $("#"+$this.attr('id')+'_input').val("False");
     }
     else {
       $category_icon_class.not("#"+$this.attr("id")).removeClass('on').addClass('off');
       $(this).addClass('on');
+      $("#"+$this.attr('id')+'_input').val("True");
     }
   });
 

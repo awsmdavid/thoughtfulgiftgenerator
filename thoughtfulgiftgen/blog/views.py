@@ -15,14 +15,13 @@ def results(request):
     	gifteeDataForm = GifteeDataForm
         gifteeDataForm.gender = request.GET.get('gender')
     	gifteeDataForm.age = request.GET.get('age')
-    	gifteeDataForm.priceMin = request.GET.get('priceMin')
-    	gifteeDataForm.priceMax = request.GET.get('priceMax')
+        gifteeDataForm.price = request.GET.get('price')
     	gifteeDataForm.tech_flag = request.GET.get('tech_flag')
-    	gifteeDataForm.sports_flag = request.GET.get('sports_flag')
+    	gifteeDataForm.fitness_flag = request.GET.get('fitness_flag')
     	gifteeDataForm.travel_flag = request.GET.get('travel_flag')
     	gifteeDataForm.fashion_flag = request.GET.get('fashion_flag')
     	gifteeDataForm.music_flag = request.GET.get('music_flag')
-        gifteeDataForm.tags = 2
+        gifteeDataForm.home_flag = request.GET.get('home_flag')
         gift_idea_result = GiftIdea.objects.filter(published=True)
 
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]

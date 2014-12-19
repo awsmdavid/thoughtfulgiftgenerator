@@ -3,36 +3,9 @@
 {% block content %}
 
 <div class="tabcontainer">
-    <p>
-    	Here's your hand-picked thoughtful gift for a {{gifteeDataForm.age}} year old {{gifteeDataForm.gender}}
-    </p>
-    <p>
-		it is over {{gifteeDataForm.priceMin}} so you don't have to worry!
-	</p>
-	<p>
-		it is under {{gifteeDataForm.priceMax}} so you don't have to worry!
-	</p>
 	<p>
 		Here is your "hand"-picked result:
 	</p>
-<!-- 	<p>
-		categories selected
-	</p>
-	<p>
-		tech:{{tech_flag}}
-	</p>
-	<p>
-		sports:{{sports_flag}}
-	</p>
-	<p>
-		travel:{{travel_flag}}
-	</p>
-	<p>
-		fashion:{{fashion_flag}}
-	</p>
-	<p>
-		music:{{music_flag}}
-	</p> -->
 </div>
 	{% for giftIdea in gift_idea_result %}
         <div class="gift-result-title">
@@ -43,6 +16,9 @@
     	</div>
     	<div>
         {{giftIdea.product_link}}
+    	</div>
+    	<div>
+        {{giftIdea.description}}
     	</div>
     {% endfor %}
 

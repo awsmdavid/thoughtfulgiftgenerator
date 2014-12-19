@@ -19,8 +19,8 @@ TODO:
         Gender:
     </div>
 
-    <img id="female_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/female.png" width="50px" height="150px" value="female">
-    <img id="male_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/male.png" width="50px" height="150px" value="male">
+    <img id="female_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/gender-icon/female.png" width="50px" height="150px" value="female">
+    <img id="male_gender_icon" class="gender_icon" src="{{STATIC_URL}}/img/gender-icon/male.png" width="50px" height="150px" value="male">
     <input id="gender_input" type="hidden" name="gender" />
 
 </section>
@@ -44,35 +44,36 @@ TODO:
     </div>
     <div>
         <!-- TODO: wtf is this, fix this to have bool toggle buttons -->
-        <img id="tech_flag" class="category_icon" src="{{STATIC_URL}}img/technology.png" width="85px" value="technology">
+        <img id="tech_flag" class="category_icon" src="{{STATIC_URL}}img/category-icon/technology.png" width="85px" value="technology">
         <input id="tech_flag_input" type="hidden" name="tech_flag" />
         
-        <img id="sports_flag"class="category_icon" src="{{STATIC_URL}}img/sports.png" width="85px" value="sports">
-        <input id="sports_flag_input" type="hidden" name="sports_flag" />
+        <img id="fitness_flag"class="category_icon" src="{{STATIC_URL}}img/category-icon/fitness.png" width="85px" value="fitness">
+        <input id="fitness_flag_input" type="hidden" name="fitness_flag" />
         
-        <img id="travel_flag" class="category_icon" src="{{STATIC_URL}}img/travel.png" width="85px" value="travel">
-        <input id="travel_flag_input" type="hidden" name="travel_flag" />
-        
-        <img id="fashion_flag"class="category_icon" src="{{STATIC_URL}}img/fashion.png" width="85px" value="fashion">
+        <img id="fashion_flag"class="category_icon" src="{{STATIC_URL}}img/category-icon/fashion2.png" width="85px" value="fashion">
         <input id="fashion_flag_input" type="hidden" name="fashion_flag" />
-        
-        <img id="music_flag" class="category_icon" src="{{STATIC_URL}}img/music.png" width="85px" value="music">
+                
+        <img id="travel_flag" class="category_icon" src="{{STATIC_URL}}img/category-icon/travel.png" width="85px" value="travel">
+        <input id="travel_flag_input" type="hidden" name="travel_flag" />
+
+        <img id="music_flag" class="category_icon" src="{{STATIC_URL}}img/category-icon/music.png" width="85px" value="music">
         <input id="music_flag_input" type="hidden" name="music_flag" />
-        <p>
-            sports, active, fashion, technology, music, home, random?
-        </p>
+
+        <img id="home_flag" class="category_icon" src="{{STATIC_URL}}img/category-icon/home.png" width="85px" value="music">
+        <input id="music_flag_input" type="hidden" name="home_flag" />
 </section>
 <section id="amount" class="grid-full">
     <div class="section-title">
-        Price Range?
+        Price:
     </div>
     <div>
-        Min:
-        <input type="text" name="priceMin" placeholder="let's not be a jerk">
-    </div>
-    <div>
-        Max:
-        <input type="text" name="priceMax" placeholder="let's not get to crazy">
+        <span>
+            <img id="price_1" class="price_icon" value="price_1" src="{{STATIC_URL}}img/price-icon/price-1.png" width="85px">
+            <img id="price_2" class="price_icon" value="price_2" src="{{STATIC_URL}}img/price-icon/price-2.png" width="85px">
+            <img id="price_3" class="price_icon" value="price_3" src="{{STATIC_URL}}img/price-icon/price-3.png" width="85px">
+            <img id="price_4" class="price_icon" value="price_4" src="{{STATIC_URL}}img/price-icon/price-4.png" width="85px">
+            <input id="price_range" type="hidden" name="price" />
+        </span>
     </div>
 </section>
 <section class="grid-full">
