@@ -8,13 +8,29 @@ GENDER_CHOICES = (
     ('Female', 'Female'),
 )
 
+AGE_CHOICES = (
+    ('age_1', '0-5'),
+    ('age_2', '6-13'),
+    ('age_3', '14-20'),
+    ('age_4', '21-34'),
+    ('age_5', '35-59'),
+    ('age_6', '60+'),
+)
+
+PRICE_CHOICES = (
+    ('price_1', '$0-20'),
+    ('price_2', '$20-50'),
+    ('price_3', '$50-100'),
+    ('price_4', '$100+'),    
+)
+
 class GiftIdea(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, max_length=255)
-    age_min = models.IntegerField()
-    age_max = models.IntegerField()
+    target_age = models.CharField(max_length=10, choices=AGE_CHOICES)
     target_gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    price_range = models.CharField(max_length=10, choices=PRICE_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
     description = models.CharField(max_length=255)
     product_link = models.CharField(max_length=255)
     image_link = models.CharField(max_length=255)
@@ -59,7 +75,10 @@ class GiftIdea(models.Model):
 
 class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    age = models.CharField(max_length=10)
+    age = models.CharField(max_length=10, choices=AGE_CHOICES)
+    #price range
+    price = models.CharField(max_length=10, choices=PRICE_CHOICES)
+    #####
     tags = models.CharField(max_length=255, blank=True, null=True)
     upvote = models.IntegerField(default=0)
     #hobby category search terms
@@ -69,5 +88,3 @@ class GifteeDataForm(forms.Form):
     tech_flag = models.BooleanField()
     music_flag = models.BooleanField()
     games_flag = models.BooleanField()
-    #price range
-    price = models.CharField(max_length=10)

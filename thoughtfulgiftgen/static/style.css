@@ -192,14 +192,11 @@ can remove, this is for white rounded border
 
 footer{
   position: fixed;
-  width: 99%;
+  width: 1000px;
   bottom: 0;
   font-size: 12px;
-  display: block;
   text-align: right;
   float: right;
-  margin-right: 1%;
-  background-color: #F3F3F7;
 }
 
 /*  Still mostly single-column.
@@ -336,11 +333,19 @@ footer{
 	Sets font styles for entire site.
  * ============================================================= */
 body{
-  min-height: 500px;
   width: 1000px;
   margin: 0 auto;
   font-family: "Helvetica Neue", Arial, sans-serif;
   letter-spacing: 1px;
+  background-color: #FFFFFF;
+  border-width: 0 1px 1px;
+
+  /*border-style: solid;*/
+  /*border-color: #D63333;*/
+}
+
+.input-form{
+  height: 400px;
 }
 /* Section Dividers*/
 #gender,#age{
