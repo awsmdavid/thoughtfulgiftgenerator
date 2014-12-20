@@ -33,6 +33,15 @@ def results(request):
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
+def random(request):
+    if request.GET: # If the form has been submitted...
+        gift_idea_result = GiftIdea.objects.filter(published=True).order_by('-upvote')[:1]
+        gift_idea_secondary_results = GiftIdea.objects.filter(published=True).order_by('-upvote')[1:]
+        # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
+        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+    return render(request, 'blog/index.html')
+
+
 def gift(request):
     # get the Post object
     giftIdea = get_object_or_404(GiftIdea, slug=slug)
