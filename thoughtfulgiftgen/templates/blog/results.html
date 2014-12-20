@@ -7,6 +7,7 @@
 		Here is your "hand"-picked result:
 	</p>
 </div>
+<div class="top-result-container">
 	{% for giftIdea in gift_idea_result %}
         <div class="gift-result-title">
         {{giftIdea.title}}
@@ -20,6 +21,30 @@
     	<div>
         {{giftIdea.description}}
     	</div>
+    	<div>
+        {{giftIdea.match_rank}}
+    	</div>
     {% endfor %}
-
+</div>
+<div class="secondary-results-container">
+    {% for giftIdea in gift_idea_secondary_results %}
+    	<div class="secondary-result">
+	        <div class="gift-result-title">
+	        {{giftIdea.title}}
+	    	</div>
+	    	<div>
+	        	<img src={{giftIdea.image_link}} width="300px">
+	    	</div>
+	    	<div>
+	        	{{giftIdea.product_link}}
+	    	</div>
+	    	<div>
+	        	{{giftIdea.description}}
+	    	</div>
+	    	<div>
+	        	{{giftIdea.match_rank}}
+	    	</div>
+		</div>
+    {% endfor %}
+</div>    
 {% endblock %}

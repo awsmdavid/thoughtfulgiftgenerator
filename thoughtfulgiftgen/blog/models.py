@@ -30,10 +30,24 @@ class GiftIdea(models.Model):
     published = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
-    @property
-    def gift_match_rank(self):
-        return self._do_calculation(self.model_field)
-    # match percent?
+    # @property
+    # def rank(self):
+    #     # get giftIdea Rank
+    #     return self._rank
+
+    # @rank.setter
+    # def rank(self, value):
+    #     # set giftIdea Rank
+    #     self._rank = value
+
+    # def calculate_rank(self, GifteeDataForm):
+    #     score = 0
+    #     if self.tech_flag==GifteeDataForm.tech_flag:
+    #         score +=1
+    #     self.rank(score)
+    #     return self.rank
+
+
     # class Meta:
     #     ordering = ['created']
  
@@ -57,13 +71,3 @@ class GifteeDataForm(forms.Form):
     games_flag = models.BooleanField()
     #price range
     price = models.CharField(max_length=10)
-
-# class GifteeData(ModelForm):
-#     class Meta:
-#         gender = models.CharField(max_length=6, choices=gender)
-#         age = models.IntegerField()
-#         hobbies = models.TextField()
-#         # exclude = ('published', 'likes', 'unlikes', 'created', 'slug', 'postId', 'dateSubmitted')
-
-# class GifteeDataForm(forms.Form):
-#     enteredData = forms.CharField(max_length=255)
