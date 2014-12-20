@@ -87,9 +87,17 @@ $(document).ready(function() {
       $this.attr('src', newSource);
   };
 
+  //swap category button images
   $(function() {
       $('img[data-alt-src]').each(function() {
           new Image().src = $(this).data('alt-src');
       }).hover(sourceSwap, sourceSwap);
+  });
+
+  //swap input button images
+  $(function() {
+    $('input[data-alt-src]').each(function() {
+        new Image().src = $(this).data('alt-src');
+    }).hover(sourceSwap, sourceSwap);
   });
 });

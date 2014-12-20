@@ -35,16 +35,16 @@ def results(request):
 
 def random(request):
     if request.GET: # If the form has been submitted...
-        gift_idea_result = GiftIdea.objects.filter(published=True).order_by('-upvote')[:1]
-        gift_idea_secondary_results = GiftIdea.objects.filter(published=True).order_by('-upvote')[1:]
+        gift_idea_results = GiftIdea.objects.filter(published=True).order_by('?')
+        gift_idea_result = gift_idea_results[:1] 
+        gift_idea_secondary_results = gift_idea_results[2:]
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
-
 def gift(request):
     # get the Post object
-    giftIdea = get_object_or_404(GiftIdea, slug=slug)
+    giftIdea = get_object_or_404(GiftIdea)
     # widget_posts = Post.objects.filter(published=True).exclude(slug=slug).order_by('?')[:5]
     # now return the rendered template
     return render(request)
