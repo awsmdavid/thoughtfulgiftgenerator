@@ -2,28 +2,30 @@
  
 {% block content %}
 
-<div class="tabcontainer">
-	<p>
-		Here is your "hand"-picked result:
-	</p>
+<div class="tabcontainer" style="font-weight:600">
+		Here are your "hand-picked" results:
 </div>
 <div class="top-result-container">
 	{% for giftIdea in gift_idea_result %}
-        <div class="gift-result-title">
-        {{giftIdea.title}}
-    	</div>
-    	<div>
-        <img src={{giftIdea.image_link}} width="300px">
-    	</div>
-    	<div>
-        {{giftIdea.product_link}}
-    	</div>
-    	<div>
-        {{giftIdea.description}}
-    	</div>
-    	<div>
-        {{giftIdea.match_rank}}
-    	</div>
+        <div class="grid-full">
+	        <div class="gift-result-title">
+	        {{giftIdea.title}}
+	    	</div>
+	    	<div>
+	        	<a href="{{giftIdea.product_link}}" target="_blank"><img src="{{giftIdea.image_link}}" width="300px"></a>
+	    	</div>
+	    </div>
+	    <div class="grid-full">
+	    	<div>
+	        <a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
+	    	</div>
+	    	<div>
+	        {{giftIdea.description}}
+	    	</div>
+	    	<div>
+	        {{giftIdea.price}}
+	    	</div>
+	    </div>
     {% endfor %}
 </div>
 <div class="secondary-results-container">
