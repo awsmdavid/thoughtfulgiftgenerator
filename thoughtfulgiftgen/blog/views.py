@@ -32,7 +32,7 @@ def results(request):
                         Q(travel_flag=gifteeDataForm.travel_flag) | 
                         Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                         Q(music_flag=gifteeDataForm.music_flag) |
-                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age, price=gifteeDataForm.price).order_by('-upvote')[:1]
+                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age, price=gifteeDataForm.price).order_by('-upvote')
                 else:
                     gift_idea_result = GiftIdea.objects.filter(
                         Q(tech_flag=gifteeDataForm.tech_flag) | 
@@ -40,7 +40,7 @@ def results(request):
                         Q(travel_flag=gifteeDataForm.travel_flag) | 
                         Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                         Q(music_flag=gifteeDataForm.music_flag) |
-                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age).order_by('-upvote')[:1]
+                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age).order_by('-upvote')
             else:
                 gift_idea_result = GiftIdea.objects.filter(
                     Q(tech_flag=gifteeDataForm.tech_flag) | 
@@ -48,7 +48,7 @@ def results(request):
                     Q(travel_flag=gifteeDataForm.travel_flag) | 
                     Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                     Q(music_flag=gifteeDataForm.music_flag) |
-                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender).order_by('-upvote')[:1]
+                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender).order_by('-upvote')
         else:
             gift_idea_result = GiftIdea.objects.filter(
                 Q(tech_flag=gifteeDataForm.tech_flag) | 
@@ -56,15 +56,11 @@ def results(request):
                 Q(travel_flag=gifteeDataForm.travel_flag) | 
                 Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                 Q(music_flag=gifteeDataForm.music_flag) |
-                Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')[:1]
-  
-        # if gender was answerd:
-        gift_idea_result = GiftIdea.objects.filter(published=True).order_by('?')  
-        # gift_idea_result = GiftIdea.objects.filter(published=True, target_gender=gifteeDataForm.gender, Q(tech_flag=gifteeDataForm.tech_flag) | Q(fitness_flag=gifteeDataForm.fitness_flag) | Q(travel_flag=gifteeDataForm.travel_flag) | Q(fashion_flag=gifteeDataForm.fashion_flag) | Q(music_flag=gifteeDataForm.music_flag)).order_by('-upvote')[:1]
-        # for GiftIdea.object in gift_idea_result:
-            # GiftIdea.object.match_rank = GiftIdea.object.calculate_rank(gifteeDataForm)
+                Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')
+        
         # TODO: add age, price, and categories
-        gift_idea_secondary_results = GiftIdea.objects.filter(published=True, target_gender=gifteeDataForm.gender).order_by('-upvote')[1:]
+        gift_idea_secondary_results = gift_idea_result[1:]
+        gift_idea_result = gift_idea_result[:1]
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
