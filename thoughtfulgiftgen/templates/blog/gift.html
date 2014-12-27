@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+<div class="top-result-container grid-full">
+        <div class="grid-half">
+	        <div class="gift-result-title">
+	        {{gift.title}}
+	    	</div>
+	    	<div>
+	        	<a href="{{gift.product_link}}" target="_blank"><img src="{{gift.image_link}}" width="300px"></a>
+	    	</div>
+	    </div>
+	    <div class="grid-half">
+	    	<div>
+	        	{{gift.description}}
+	    	</div>
+	    	<div>
+	        	Price: ${{gift.price}}
+	    	</div>
+	    	<div>
+	        	Upvotes: {{gift.upvote}}
+	    	</div>
+	    	<div>
+	        	<a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
+	    	</div>
+	    </div>
+</div>
+ 
+{% endblock %}

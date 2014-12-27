@@ -86,10 +86,9 @@ def results(request):
                     Q(music_flag=gifteeDataForm.music_flag) |
                     Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')
 
-        # TODO: add age, price, and categories
         gift_idea_secondary_results = gift_idea_result[1:4]
         gift_idea_result = gift_idea_result[:1]
-        # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
+        
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
@@ -98,6 +97,8 @@ def random(request):
         gift_idea_results = GiftIdea.objects.filter(published=True).order_by('?')
         gift_idea_secondary_results = gift_idea_results[1:4]
         gift_idea_result = gift_idea_results[:1]
+        
+        # slugs_to_exclude = [giftIdea.title for giftIdea in gift_idea_result] 
 
         # generate random with more scalable method since order_by('?')[:X] does not scale well?
         # last = GiftIdea.objects.count() - 1
@@ -107,6 +108,11 @@ def random(request):
         # MyObj1 = MyModel.objects.all()[index1]
         # MyObj2 = MyModel.objects.all()[index2]
 
-        # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
+
+def gift(request, slug):
+    # get the Post object
+    gift = get_object_or_404(GiftIdea, slug=slug)
+    # now return the rendered template
+    return render(request, 'blog/gift.html', { 'gift': gift}) # Redirect after POST    # if request.POST: # If the form has been submitted...
