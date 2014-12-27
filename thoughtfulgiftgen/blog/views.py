@@ -15,7 +15,7 @@ def results(request):
     	gifteeDataForm = GifteeDataForm
         gifteeDataForm.gender = request.GET.get('gender')
     	gifteeDataForm.age = request.GET.get('age')
-        gifteeDataForm.price = request.GET.get('price')
+        gifteeDataForm.price_range = request.GET.get('price_range')
     	gifteeDataForm.tech_flag = request.GET.get('tech_flag')
     	gifteeDataForm.fitness_flag = request.GET.get('fitness_flag')
     	gifteeDataForm.travel_flag = request.GET.get('travel_flag')
@@ -25,14 +25,14 @@ def results(request):
         # if gender was answerd:
         if request.GET.get('gender'):
             if request.GET.get('age'):
-                if request.GET.get('price'):
+                if request.GET.get('price_range'):
                     gift_idea_result = GiftIdea.objects.filter(
                         Q(tech_flag=gifteeDataForm.tech_flag) | 
                         Q(fitness_flag=gifteeDataForm.fitness_flag) | 
                         Q(travel_flag=gifteeDataForm.travel_flag) | 
                         Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                         Q(music_flag=gifteeDataForm.music_flag) |
-                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age, price=gifteeDataForm.price).order_by('-upvote')
+                        Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender, target_age=gifteeDataForm.age, price_range=gifteeDataForm.price_range).order_by('-upvote')
                 else:
                     gift_idea_result = GiftIdea.objects.filter(
                         Q(tech_flag=gifteeDataForm.tech_flag) | 
@@ -49,20 +49,48 @@ def results(request):
                     Q(fashion_flag=gifteeDataForm.fashion_flag) | 
                     Q(music_flag=gifteeDataForm.music_flag) |
                     Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_gender=gifteeDataForm.gender).order_by('-upvote')
+        # if age was answerd (but gender was not):
+        elif request.GET.get('age'):
+            if request.GET.get('price_range'):
+                gift_idea_result = GiftIdea.objects.filter(
+                    Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    Q(fitness_flag=gifteeDataForm.fitness_flag) | 
+                    Q(travel_flag=gifteeDataForm.travel_flag) | 
+                    Q(fashion_flag=gifteeDataForm.fashion_flag) | 
+                    Q(music_flag=gifteeDataForm.music_flag) |
+                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_age=gifteeDataForm.age, price_range = gifteeDataForm.price_range).order_by('-upvote')
+            else:
+                gift_idea_result = GiftIdea.objects.filter(
+                    Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    Q(fitness_flag=gifteeDataForm.fitness_flag) | 
+                    Q(travel_flag=gifteeDataForm.travel_flag) | 
+                    Q(fashion_flag=gifteeDataForm.fashion_flag) | 
+                    Q(music_flag=gifteeDataForm.music_flag) |
+                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, target_age=gifteeDataForm.age).order_by('-upvote')
+        # if price was answerd (but gender and age were not):
+        elif request.GET.get('price_range'):
+            gift_idea_result = GiftIdea.objects.filter(
+                    Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    Q(fitness_flag=gifteeDataForm.fitness_flag) | 
+                    Q(travel_flag=gifteeDataForm.travel_flag) | 
+                    Q(fashion_flag=gifteeDataForm.fashion_flag) | 
+                    Q(music_flag=gifteeDataForm.music_flag) |
+                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True, price_range = gifteeDataForm.price_range).order_by('-upvote')
+        # if nothing was answerd (perhaps a category):
         else:
             gift_idea_result = GiftIdea.objects.filter(
-                Q(tech_flag=gifteeDataForm.tech_flag) | 
-                Q(fitness_flag=gifteeDataForm.fitness_flag) | 
-                Q(travel_flag=gifteeDataForm.travel_flag) | 
-                Q(fashion_flag=gifteeDataForm.fashion_flag) | 
-                Q(music_flag=gifteeDataForm.music_flag) |
-                Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')
-        
+                    Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    Q(fitness_flag=gifteeDataForm.fitness_flag) | 
+                    Q(travel_flag=gifteeDataForm.travel_flag) | 
+                    Q(fashion_flag=gifteeDataForm.fashion_flag) | 
+                    Q(music_flag=gifteeDataForm.music_flag) |
+                    Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')
+
         # TODO: add age, price, and categories
         gift_idea_secondary_results = gift_idea_result[1:4]
         gift_idea_result = gift_idea_result[:1]
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
-        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
 def random(request):

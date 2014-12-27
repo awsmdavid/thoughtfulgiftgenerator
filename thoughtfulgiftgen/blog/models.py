@@ -46,23 +46,6 @@ class GiftIdea(models.Model):
     published = models.BooleanField(default=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
-    # @property
-    # def rank(self):
-    #     # get giftIdea Rank
-    #     return self._rank
-
-    # @rank.setter
-    # def rank(self, value):
-    #     # set giftIdea Rank
-    #     self._rank = value
-
-    # def calculate_rank(self, GifteeDataForm):
-    #     score = 0
-    #     if self.tech_flag==GifteeDataForm.tech_flag:
-    #         score +=1
-    #     self.rank(score)
-    #     return self.rank
-
 
     # class Meta:
     #     ordering = ['created']
@@ -77,7 +60,7 @@ class GifteeDataForm(forms.Form):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.CharField(max_length=10, choices=AGE_CHOICES)
     #price range
-    price = models.CharField(max_length=10, choices=PRICE_CHOICES)
+    price_range = models.CharField(max_length=10, choices=PRICE_CHOICES)
     #####
     tags = models.CharField(max_length=255, blank=True, null=True)
     upvote = models.IntegerField(default=0)
