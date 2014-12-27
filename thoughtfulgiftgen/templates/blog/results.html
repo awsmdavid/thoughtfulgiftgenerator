@@ -2,12 +2,12 @@
  
 {% block content %}
 
-<div class="tabcontainer" style="font-weight:600">
-		Here are your "hand-picked" results:
+<div class="results-page-section-title">
+		Here is your "hand-picked" result:
 </div>
-<div class="top-result-container">
+<div class="top-result-container grid-full">
 	{% for giftIdea in gift_idea_result %}
-        <div class="grid-full">
+        <div class="grid-half">
 	        <div class="gift-result-title">
 	        {{giftIdea.title}}
 	    	</div>
@@ -15,37 +15,39 @@
 	        	<a href="{{giftIdea.product_link}}" target="_blank"><img src="{{giftIdea.image_link}}" width="300px"></a>
 	    	</div>
 	    </div>
-	    <div class="grid-full">
-	    	<div>
-	        <a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
-	    	</div>
-	    	<div>
-	        {{giftIdea.description}}
-	    	</div>
-	    	<div>
-	        {{giftIdea.price}}
-	    	</div>
-	    </div>
-    {% endfor %}
-</div>
-<div class="secondary-results-container">
-    {% for giftIdea in gift_idea_secondary_results %}
-    	<div class="secondary-result">
-	        <div class="gift-result-title">
-	        {{giftIdea.title}}
-	    	</div>
-	    	<div>
-	        	<img src={{giftIdea.image_link}} width="300px">
-	    	</div>
-	    	<div>
-	        	{{giftIdea.product_link}}
-	    	</div>
+	    <div class="grid-half">
 	    	<div>
 	        	{{giftIdea.description}}
 	    	</div>
 	    	<div>
-	        	{{giftIdea.match_rank}}
+	        	Price: ${{giftIdea.price}}
 	    	</div>
+	    	<div>
+	        	<a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
+	    	</div>
+	    </div>
+    {% endfor %}
+</div>
+<div class="results-page-section-title">
+	Other Thoughtful Gifts:
+</div>
+<div class="secondary-results-container grid-full">
+    {% for giftIdea in gift_idea_secondary_results %}
+    	<div class="secondary-results grid-third">
+	        <center>
+		        <div class="gift-result-title">
+		        {{giftIdea.title}}
+		    	</div>
+		    	<div>
+		        	<a href="{{giftIdea.product_link}}" target="_blank"><img src="{{giftIdea.image_link}}" width="100px"></a>
+		    	</div>	 
+		    	<div>
+		        	Price: ${{giftIdea.price}}
+		    	</div>   	
+		    	<div>
+		        	<a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
+		    	</div>
+		    </center>
 		</div>
     {% endfor %}
 </div>    

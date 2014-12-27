@@ -176,10 +176,26 @@ a:active {
   padding-left: 1%;
 }
 
+/*Results Page*/
+
+.results-page-section-title{
+  font-weight: 600;
+  color: #dd1144;
+}
+
+.top-result-container{
+  float: left;
+  margin-bottom: 25px;
+}
+
 .gift-result-title{
   font-size: 20px;
   font-weight: bold;
   padding-top: 2%;
+}
+
+.secondary-results{
+  margin-bottom: 25px;
 }
 
 /*
