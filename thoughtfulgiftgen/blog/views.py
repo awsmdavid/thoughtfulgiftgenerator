@@ -59,17 +59,26 @@ def results(request):
                 Q(home_flag=gifteeDataForm.home_flag)).filter(published=True).order_by('-upvote')
         
         # TODO: add age, price, and categories
-        gift_idea_secondary_results = gift_idea_result[1:]
+        gift_idea_secondary_results = gift_idea_result[1:4]
         gift_idea_result = gift_idea_result[:1]
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'gifteeDataForm': gifteeDataForm}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
 def random(request):
-    if request.GET: # If the form has been submitted...
+    if request.GET: # TODO: eliminate duplicates
         gift_idea_results = GiftIdea.objects.filter(published=True).order_by('?')
+        gift_idea_secondary_results = gift_idea_results[1:4]
         gift_idea_result = gift_idea_results[:1]
-        gift_idea_secondary_results = gift_idea_results[1:]
+
+        # generate random with more scalable method since order_by('?')[:X] does not scale well?
+        # last = GiftIdea.objects.count() - 1
+        # index1 = randint(0, last)
+        # index2 = randint(0, last - 1)
+        # if index2 == index1: index2 = last
+        # MyObj1 = MyModel.objects.all()[index1]
+        # MyObj2 = MyModel.objects.all()[index2]
+
         # gift_idea_result = GiftIdea.objects.filter(Q(tags__icontains = search_term) | Q(description__icontains= search_term)).order_by('-likes')[:5]
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')

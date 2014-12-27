@@ -194,8 +194,9 @@ a:active {
   padding-top: 2%;
 }
 
-.secondary-results{
+.secondary-results-container{
   margin-bottom: 25px;
+  min-height: 200px;
 }
 
 /*
@@ -357,7 +358,7 @@ body{
   padding: 0 25px 0 25px;
 
   /*border-style: solid;*/
-  min-height: 700px;
+  min-height: 800px;
   /*border-color: #D63333;*/
 }
 
