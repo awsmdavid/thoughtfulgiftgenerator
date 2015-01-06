@@ -73,7 +73,7 @@ html {
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  background-color: #FBFBFE;
+  /*background-color: #FBFBFE;*/
 }
 
 /*  Display audio, canvas, and video elements as inline block elements. */
@@ -156,9 +156,36 @@ a:active {
     z-index: -1;
 }*/
 
+.header-container{
+  width: 1000px;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+  /*border-style: solid;*/
+
+  /*border-color: #D63333;*/
+}
+
+.masthead{
+  /*background: url(img/background/header-bg.jpg) no-repeat 50% 100%;*/
+  background-color: #D8DEEB;
+  background-size: cover;
+  height: 83px;
+  font-family: 'Open Sans', sans-serif;
+}
+/*a#masthead{
+  color: #3D5C99;
+}*/
+
+#tagline{
+  color: #3D5C99;
+  padding: 0 60px;
+}
+
 #masthead{
   font-size: 30px;
   font-weight: 400;
+  padding: 0 30px;
 }
 
 .content {
@@ -168,6 +195,7 @@ a:active {
 .index-section-title{
   font-weight: 600;
   color: #dd1144;
+  margin: 20px 0;
 }
 
 .section-title{
@@ -199,6 +227,10 @@ a:active {
   padding-top: 2%;
 }
 
+.results-metadata{
+  margin: 41px 0 0 0;
+}
+
 .secondary-results-container{
   margin-bottom: 25px;
   min-height: 200px;
@@ -213,12 +245,15 @@ can remove, this is for white rounded border
 }*/
 
 footer{
+  background-color: #D8DEEB;
   position: fixed;
-  width: 1000px;
+  width: 100%;
   bottom: 0;
   font-size: 12px;
   text-align: right;
   float: right;
+  padding: 0 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /*  Still mostly single-column.
@@ -354,7 +389,7 @@ footer{
 	TYPOGRAPHY
 	Sets font styles for entire site.
  * ============================================================= */
-body{
+.main{
   width: 1000px;
   margin: 0 auto;
   font-family: "Helvetica Neue", Arial, sans-serif;
