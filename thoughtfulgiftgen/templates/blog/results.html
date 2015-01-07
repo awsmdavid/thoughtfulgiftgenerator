@@ -6,13 +6,12 @@
 		Here is your "hand-picked" result:
 </div>
 <div class="top-result-container grid-full">
-	{% for giftIdea in gift_idea_result %}
         <div class="grid-half">
 	        <div class="gift-result-title">
-	        {{giftIdea.title}}
+	        {{gift_idea_result.title}}
 	    	</div>
 	    	<div>
-	        	<a href="{{giftIdea.product_link}}" target="_blank"><img src="{{giftIdea.image_link}}" width="300px"></a>
+	        	<a href="{{gift_idea_result.product_link}}" target="_blank"><img src="{{gift_idea_result.image_link}}" width="300px"></a>
 	    	</div>
 	    </div>
 	    <div class="grid-half results-metadata">
@@ -20,19 +19,18 @@
 	    		Description:
 	    	</strong>
 	    	<div>
-	        	{{giftIdea.description}}
+	        	{{gift_idea_result.description}}
 	    	</div>
 	    	<div>
-	        	<strong>Price: </strong>${{giftIdea.price}}
+	        	<strong>Price: </strong>${{gift_idea_result.price}}
 	    	</div>
 	    	<div>
-	        	<strong>Upvotes: </strong>{{giftIdea.upvote}}
+	        	<strong>Upvotes: </strong>{{gift_idea_result.upvote}}
 	    	</div>
 	    	<div>
-	        	<a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
+	        	<a href="{{gift_idea_result.product_link}}" target="_blank">Product Link</a>
 	    	</div>
 	    </div>
-    {% endfor %}
 </div>
 <div class="results-page-section-title">
 	Other Thoughtful Gifts:
