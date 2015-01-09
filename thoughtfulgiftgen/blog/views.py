@@ -60,9 +60,10 @@ def results(request):
             gift_idea_secondary_results = gift_idea_results.exclude(slug=slug_to_exclude).order_by('?')[:3]
         except:
             if GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))[0]:
+                #TODO: add finer granularity in case nothing hits all three categories
                 gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))
             elif GiftIdea.objects.filter(reduce(operator.and_, category_filter_args))[0]:
-                gift_idea_results = gift_idea_results.filter(reduce(operator.or_, category_filter_args))
+                gift_idea_results = GiftIdea.objects.filter(reduce(operator.or_, category_filter_args))
             else:
                 gift_idea_results = GiftIdea.objects.filter(published=True).order_by('?')
 
