@@ -47,18 +47,26 @@ def results(request):
         if gifteeDataForm.home_flag:
             category_filter_args.append( Q(**{'home_flag':True} ) )
 
-        # gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args)).filter(reduce(operator.or_, category_filter_args))
+        # apply filter criteria for demographic data
         if key_filter_args:
             gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))
+        # apply filter criteria for category data
         if category_filter_args:
-            gift_idea_results = gift_idea_results.filter(reduce(operator.or_, category_filter_args))
+            gift_idea_results = GiftIdea.objects.filter(reduce(operator.or_, category_filter_args))
 
         try:
             gift_idea_result = gift_idea_results[0]
             slug_to_exclude = gift_idea_result.slug
             gift_idea_secondary_results = gift_idea_results.exclude(slug=slug_to_exclude).order_by('?')[:3]
         except:
-            gift_idea_result = GiftIdea.objects.order_by('?')[0]
+            if GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))[0]:
+                gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))
+            elif GiftIdea.objects.filter(reduce(operator.and_, category_filter_args))[0]:
+                gift_idea_results = gift_idea_results.filter(reduce(operator.or_, category_filter_args))
+            else:
+                gift_idea_results = GiftIdea.objects.filter(published=True).order_by('?')
+
+            gift_idea_result = gift_idea_results[0]
             slug_to_exclude = gift_idea_result.slug
             gift_idea_secondary_results = GiftIdea.objects.exclude(slug=slug_to_exclude).order_by('?')[:3]
 
