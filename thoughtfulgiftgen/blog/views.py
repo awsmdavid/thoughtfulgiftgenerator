@@ -32,8 +32,17 @@ def results(request):
             if request.GET.get('age'):
                 # gender and age and price
                 if request.GET.get('price_range'):
-                    gift_idea_results = GiftIdea.objects.filter(
-                        Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    # kwargs = {
+
+                    #     # Q(tech_flag=gifteeDataForm.tech_flag) | 
+                    #     # Q(fitness_flag=gifteeDataForm.fitness_flag) | 
+                    #     # Q(travel_flag=gifteeDataForm.travel_flag) | 
+                    #     # Q(fashion_flag=gifteeDataForm.fashion_flag) | 
+                    #     # Q(music_flag=gifteeDataForm.music_flag) |
+                    #     # Q(home_flag=gifteeDataForm.home_flag)
+                    #     tech_flag : gifteeDataForm.tech_flag
+                    # }
+                    gift_idea_results = GiftIdea.objects.filter(Q(tech_flag=gifteeDataForm.tech_flag) | 
                         Q(fitness_flag=gifteeDataForm.fitness_flag) | 
                         Q(travel_flag=gifteeDataForm.travel_flag) | 
                         Q(fashion_flag=gifteeDataForm.fashion_flag) | 
@@ -106,10 +115,15 @@ def results(request):
                     Q(music_flag=gifteeDataForm.music_flag) |
                     Q(home_flag=gifteeDataForm.home_flag)).filter(published=True)
 
-        gift_idea_result = gift_idea_results[0]
-        slug_to_exclude = gift_idea_result.slug
-        gift_idea_secondary_results = gift_idea_results.exclude(slug=slug_to_exclude).order_by('?')[:3]
-
+        if gift_idea_results:
+            gift_idea_result = gift_idea_results[0]
+            slug_to_exclude = gift_idea_result.slug
+            gift_idea_secondary_results = gift_idea_results.exclude(slug=slug_to_exclude).order_by('?')[:3]
+        else:
+            gift_idea_result = GiftIdea.objects.order_by('?')[0]
+            slug_to_exclude = gift_idea_result.slug
+            gift_idea_secondary_results = GiftIdea.objects.exclude(slug=slug_to_exclude).order_by('?')[:3]
+            
         return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
