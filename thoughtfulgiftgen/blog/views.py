@@ -28,24 +28,24 @@ def results(request):
         category_filter_args=[]
 
         if gifteeDataForm.gender:
-            key_filter_args.append( Q(**{'target_gender':gifteeDataForm.gender} ) )
+            key_filter_args.append( Q(**{u'target_gender':gifteeDataForm.gender} ) )
         if gifteeDataForm.age:
-            key_filter_args.append( Q(**{'target_age':gifteeDataForm.age} ) )
+            key_filter_args.append( Q(**{u'target_age':gifteeDataForm.age} ) )
         if gifteeDataForm.price_range:
-            key_filter_args.append( Q(**{'price_range':gifteeDataForm.price_range} ) )
+            key_filter_args.append( Q(**{u'price_range':gifteeDataForm.price_range} ) )
 
         if gifteeDataForm.tech_flag:
-            category_filter_args.append( Q(**{'tech_flag':True} ) )
+            category_filter_args.append( Q(**{u'tech_flag':gifteeDataForm.tech_flag} ) )
         if gifteeDataForm.fitness_flag:
-            category_filter_args.append( Q(**{'fitness_flag':True} ) )
+            category_filter_args.append( Q(**{u'fitness_flag':gifteeDataForm.fitness_flag} ) )
         if gifteeDataForm.travel_flag:
-            category_filter_args.append( Q(**{'travel_flag':True} ) )
+            category_filter_args.append( Q(**{u'travel_flag':gifteeDataForm.travel_flag} ) )
         if gifteeDataForm.fashion_flag:
-            category_filter_args.append( Q(**{'fashion_flag':True} ) )
+            category_filter_args.append( Q(**{u'fashion_flag':gifteeDataForm.fashion_flag} ) )
         if gifteeDataForm.music_flag:
-            category_filter_args.append( Q(**{'music_flag':True} ) )
+            category_filter_args.append( Q(**{u'music_flag':gifteeDataForm.music_flag} ) )
         if gifteeDataForm.home_flag:
-            category_filter_args.append( Q(**{'home_flag':True} ) )
+            category_filter_args.append( Q(**{u'home_flag':gifteeDataForm.home_flag} ) )
 
         # apply filter criteria for demographic data
         if key_filter_args:
