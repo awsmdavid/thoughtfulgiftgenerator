@@ -47,11 +47,14 @@ def results(request):
         if gifteeDataForm.home_flag:
             category_filter_args.append( Q(**{u'home_flag':gifteeDataForm.home_flag} ) )
 
+        # if both demographic and categorical data selected:
+        if key_filter_args and category_filter_args:
+            gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args)).filter(reduce(operator.or_, category_filter_args))
         # apply filter criteria for demographic data
-        if key_filter_args:
+        elif key_filter_args:
             gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))
         # apply filter criteria for category data
-        if category_filter_args:
+        elif category_filter_args:
             gift_idea_results = GiftIdea.objects.filter(reduce(operator.or_, category_filter_args))
 
         try:
