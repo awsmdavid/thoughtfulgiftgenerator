@@ -34,28 +34,28 @@ def results(request):
         if gifteeDataForm.price_range:
             key_filter_args.append( Q(**{u'price_range':gifteeDataForm.price_range} ) )
 
-        if gifteeDataForm.tech_flag:
+        if gifteeDataForm.tech_flag==True:
             category_filter_args.append( Q(**{u'tech_flag':gifteeDataForm.tech_flag} ) )
-        if gifteeDataForm.fitness_flag:
+        if gifteeDataForm.fitness_flag==True:
             category_filter_args.append( Q(**{u'fitness_flag':gifteeDataForm.fitness_flag} ) )
-        if gifteeDataForm.travel_flag:
+        if gifteeDataForm.travel_flag==True:
             category_filter_args.append( Q(**{u'travel_flag':gifteeDataForm.travel_flag} ) )
-        if gifteeDataForm.fashion_flag:
+        if gifteeDataForm.fashion_flag==True:
             category_filter_args.append( Q(**{u'fashion_flag':gifteeDataForm.fashion_flag} ) )
-        if gifteeDataForm.music_flag:
+        if gifteeDataForm.music_flag==True:
             category_filter_args.append( Q(**{u'music_flag':gifteeDataForm.music_flag} ) )
-        if gifteeDataForm.home_flag:
+        if gifteeDataForm.home_flag==True:
             category_filter_args.append( Q(**{u'home_flag':gifteeDataForm.home_flag} ) )
 
         # if both demographic and categorical data selected:
         if key_filter_args and category_filter_args:
-            gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args)).filter(reduce(operator.or_, category_filter_args))
+            gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args)).filter(reduce(operator.or_, category_filter_args)).order_by('?')
         # apply filter criteria for demographic data
         elif key_filter_args:
-            gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args))
+            gift_idea_results = GiftIdea.objects.filter(reduce(operator.and_, key_filter_args)).order_by('?')
         # apply filter criteria for category data
         elif category_filter_args:
-            gift_idea_results = GiftIdea.objects.filter(reduce(operator.or_, category_filter_args))
+            gift_idea_results = GiftIdea.objects.filter(reduce(operator.or_, category_filter_args)).order_by('?')
 
         try:
             gift_idea_result = gift_idea_results[0]
