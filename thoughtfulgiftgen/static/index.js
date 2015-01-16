@@ -71,7 +71,7 @@ $(document).ready(function() {
       $("#"+$this.attr('id')+'_input').val("True");
     }else if ($(this).hasClass('on'))  {
       $(this).removeClass('on').addClass('off');
-      $("#"+$this.attr('id')+'_input').val("False");
+      $("#"+$this.attr('id')+'_input').val("");
     }
     else {
       $category_icon_class.not("#"+$this.attr("id")).removeClass('on').addClass('off');
