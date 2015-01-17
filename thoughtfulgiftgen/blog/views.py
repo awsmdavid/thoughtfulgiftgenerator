@@ -23,7 +23,7 @@ def results(request):
     	gifteeDataForm.fashion_flag = request.GET.get('fashion_flag')
     	gifteeDataForm.music_flag = request.GET.get('music_flag')
         gifteeDataForm.home_flag = request.GET.get('home_flag')
-        
+
         key_filter_args=[]
         category_filter_args=[]
 
@@ -77,7 +77,19 @@ def results(request):
             slug_to_exclude = gift_idea_result.slug
             gift_idea_secondary_results = GiftIdea.objects.exclude(slug=slug_to_exclude).order_by('?')[:3]
 
-        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+        #get camelcamelcamel info
+        if '/dp/' in gift_idea_result.product_link:
+            productSlug = gift_idea_result.product_link.split("/dp/")
+            camelChartUrl = "http://charts.camelcamelcamel.com/us/"+productSlug[1]+"/amazon.png?force=1&zero=0&desired=false&legend=1&ilt=1&tp=all&fo=0&lang=en"
+            camelLinkUrl = "http://camelcamelcamel.com/product/"+productSlug[1]
+        elif '/product/' in gift_idea_result.product_link:
+            tempProductSlug = gift_idea_result.product_link.split("/product/")
+            productSlug = tempProductSlug[1].split('/ref')
+            camelChartUrl = "http://charts.camelcamelcamel.com/us/"+productSlug[0]+"/amazon.png?force=1&zero=0&desired=false&legend=1&ilt=1&tp=all&fo=0&lang=en"
+            camelLinkUrl = "http://camelcamelcamel.com/product/"+productSlug[0]
+
+
+        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'camelLinkUrl': camelLinkUrl, 'camelChartUrl': camelChartUrl}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
 def random(request):
@@ -86,7 +98,11 @@ def random(request):
         slug_to_exclude = gift_idea_result.slug
         gift_idea_secondary_results = GiftIdea.objects.filter(published=True).exclude(slug=slug_to_exclude).order_by('?')[:3]
         
-        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results}) # Redirect after POST    # if request.POST: # If the form has been submitted...
+        #get camelcamelcamel info
+        camelChartUrl = "http://charts.camelcamelcamel.com/us/B00009NQQO/amazon.png?force=1&zero=0&w=725&h=440&desired=false&legend=1&ilt=1&tp=all&fo=0&lang=en"
+        camelLinkUrl = "http://camelcamelcamel.com/product/B005ZZ9MDG"
+
+        return render(request, 'blog/results.html', { 'gift_idea_result': gift_idea_result, 'gift_idea_secondary_results': gift_idea_secondary_results, 'camelLinkUrl': camelLinkUrl, 'camelChartUrl': camelChartUrl}) # Redirect after POST    # if request.POST: # If the form has been submitted...
     return render(request, 'blog/index.html')
 
 def gift(request, slug):
