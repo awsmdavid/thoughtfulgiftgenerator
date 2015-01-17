@@ -237,10 +237,17 @@ a:active {
   margin-left: auto;
 
 }
-.top-result-price-history-img{
-  max-height: 200px;
-  max-width: 200px;
+#top-price-history a { position:relative; }
+#top-price-history a span { position:absolute; display:none;}
+#top-price-history:hover span { 
+  position: fixed;
+  margin-top: -150px;
+  display:block; 
+  height: 500px; 
+  width: 400px;
+  opacity: .99;
 }
+
 
 .results-metadata{
   margin: 41px 0 0 0;

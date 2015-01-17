@@ -31,7 +31,7 @@ class GiftIdea(models.Model):
     price_range = models.CharField(max_length=10, choices=PRICE_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=1000)
     product_link = models.CharField(max_length=255)
     image_link = models.CharField(max_length=255)
     #hobby flags

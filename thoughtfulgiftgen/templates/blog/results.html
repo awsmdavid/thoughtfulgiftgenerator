@@ -26,8 +26,11 @@
         	{{gift_idea_result.description}}
     	</div>
     	<div>
-        	<strong>Price: </strong>${{gift_idea_result.price}}
-    		<div>
+        	<strong>Price: </strong>        		
+        		<div id="top-price-history">
+        			<a href="{{camelLinkUrl}}" target="_blank">${{gift_idea_result.price}}<span><img src="{{camelChartUrl}}" alt="image"/></span></a>
+        		</div>
+    		<!-- <div>
     			<strong>
     				Price History
     			</strong>
@@ -35,7 +38,7 @@
         		<img class="top-result-price-history-img" src="{{camelChartUrl}}">
         	</a>
         	(powered by <a href="http://www.camelcamelcamel.com" target="_blank">camelcamelcamel.com</a>)
-        	</div>
+        	</div> -->
     	</div>
     	<div>
         	<strong>Upvotes: </strong>{{gift_idea_result.upvote}}
