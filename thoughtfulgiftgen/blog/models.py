@@ -2,6 +2,8 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django import forms
 from django.forms import ModelForm
+from django.http import HttpResponse
+from django.utils import simplejson
  
 GENDER_CHOICES = (
     ('Male', 'Male'),
@@ -72,3 +74,28 @@ class GifteeDataForm(forms.Form):
     tech_flag = models.BooleanField()
     music_flag = models.BooleanField()
     games_flag = models.BooleanField()
+
+def like(request):
+    vars = {}
+    if request.method == 'POST':
+        slug = request.POST.get('slug', None)
+        company = get_object_or_404(Company, slug=slug)
+
+        liked, created = Like.objects.create(company=company)
+
+        try:
+            user_liked = Like.objects.get(company=company, user=user)
+        except:
+            user_liked = None
+
+        if user_liked:
+            user_liked.total_likes -= 1
+            liked.user.remove(request.user)
+            user_liked.save()
+        else:
+            liked.user.add(request.user)
+            liked.total_likes += 1
+            liked.save()
+
+    return HttpResponse(simplejson.dumps(vars),
+                    mimetype='application/javascript')

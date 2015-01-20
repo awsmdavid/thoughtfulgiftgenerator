@@ -7,7 +7,7 @@
 </div>
 
 <!--top results-->
-<div class="top-result-container grid-full shadow">
+<div class="top-result-container grid-full shadow-heavy">
     <div class="grid-half">
         <div class="gift-result-title">
 	        <a href="{{gift_idea_result.product_link}}" target="_blank">{{gift_idea_result.title}}</a>
@@ -27,10 +27,20 @@
     	</div>
     	<div>
         	<strong>Price: </strong>        		
+<!--         		<div id="top-price-history">
+        			${{gift_idea_result.price}}
+        			<div href="{{camelLinkUrl}}" target="_blank">[Price History]
+        				<span>
+        					<img src="{{camelChartUrl}}" alt="{{gift_idea_result.title}} price history"/>
+        				</span>
+        			</div>
+        		</div> -->
         		<div id="top-price-history">
-        			<a href="{{camelLinkUrl}}" target="_blank">${{gift_idea_result.price}}<span><img src="{{camelChartUrl}}" alt="image"/></span></a>
+        			${{gift_idea_result.price}}
+        			<a href="{{camelLinkUrl}}" target="_blank">[Price History]
+        			</a>
         		</div>
-    		<!-- <div>
+<!--     		<div>
     			<strong>
     				Price History
     			</strong>
@@ -41,10 +51,10 @@
         	</div> -->
     	</div>
     	<div>
-        	<strong>Upvotes: </strong>{{gift_idea_result.upvote}}
+        	<a href="{{gift_idea_result.product_link}}" target="_blank">Product Link</a>
     	</div>
     	<div>
-        	<a href="{{gift_idea_result.product_link}}" target="_blank">Product Link</a>
+        	<strong>Upvotes: </strong>{{gift_idea_result.upvote}}
     	</div>
     </div>
 </div>
@@ -55,7 +65,7 @@
 </div>
 <div class="secondary-results-container grid-full">
     {% for giftIdea in gift_idea_secondary_results %}
-    	<div class="secondary-results grid-third shadow">
+    	<div class="secondary-results grid-third shadow-light">
 	        <center>
 		        <div class="secondary-results-title">
 		        {{giftIdea.title}}
@@ -64,7 +74,7 @@
 		        	<a href="{{giftIdea.product_link}}" target="_blank">
 		        		<img class="secondary-results-img" src="{{giftIdea.image_link}}">
 		        	</a>
-		    	</div>	 
+
 		    	<div>
 		        	Price: ${{giftIdea.price}}
 		    	</div>   	

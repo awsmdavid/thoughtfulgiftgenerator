@@ -237,17 +237,25 @@ a:active {
   margin-left: auto;
 
 }
-#top-price-history a { position:relative; }
-#top-price-history a span { position:absolute; display:none;}
-#top-price-history:hover span { 
+#top-price-history div { 
+  position:relative; 
+  color: #0088cc;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+#top-price-history div span { 
+  position:absolute; 
+  display:none;
+}
+/*#top-price-history:hover span { 
   position: fixed;
   margin-top: -150px;
   display:block; 
   height: 500px; 
   width: 400px;
-  opacity: .99;
+  opacity: 1;
 }
-
+*/
 
 .results-metadata{
   margin: 41px 0 0 0;
@@ -270,11 +278,19 @@ a:active {
   /*width: 50px;*/
 }
 
-.shadow {
+.shadow-heavy {
+  -moz-box-shadow:    -2px -2px 10px 2px #ccc;
+  -webkit-box-shadow: -2px -2px 10px 2px #ccc;
+  box-shadow:         -2px -2px 10px 2px #ccc;
+}
+
+.shadow-light {
   -moz-box-shadow:    -1px -1px 5px 3px #ccc;
   -webkit-box-shadow: -1px -1px 5px 3px #ccc;
   box-shadow:         -2px -2px 10px 2px #ccc;
+  padding-left: 10px;
 }
+
 
 /*
 can remove, this is for white rounded border
