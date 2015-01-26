@@ -262,7 +262,7 @@ a:active {
 }
 
 .secondary-results-container{
-  margin-bottom: 25px;
+  margin: 25px;
   min-height: 300px;
 }
 
@@ -271,6 +271,10 @@ a:active {
   font-weight: bold;
   padding: 15px;
   height: 100px;
+}
+
+.secondary-results-content{
+  padding-bottom: 20px;
 }
 
 .secondary-results-img{

@@ -68,9 +68,11 @@
     	<div class="secondary-results grid-third shadow-light">
 	        <center>
 		        <div class="secondary-results-title">
-		        {{giftIdea.title}}
+                    <a href="{{giftIdea.product_link}}" target="_blank">
+        		        {{giftIdea.title}}
+                    </a>
 		    	</div>
-		    	<div>
+		    	<div class="secondary-results-content">
 		        	<a href="{{giftIdea.product_link}}" target="_blank">
 		        		<img class="secondary-results-img" src="{{giftIdea.image_link}}">
 		        	</a>
@@ -78,9 +80,9 @@
 		    	<div>
 		        	Price: ${{giftIdea.price}}
 		    	</div>   	
-		    	<div>
+<!-- 		    	<div>
 		        	<a href="{{giftIdea.product_link}}" target="_blank">Product Link</a>
-		    	</div>
+		    	</div> -->
 			    <div>
 		        	Upvotes: {{giftIdea.upvote}}
 		    	</div>
