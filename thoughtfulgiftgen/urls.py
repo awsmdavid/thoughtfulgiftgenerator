@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 	url(r'^submit/', 'blog.views.results'),
 	url(r'^random/', 'blog.views.random'),
     url(r'^gift/(?P<slug>[\w\-]+)/$', 'blog.views.gift'),
-    url(r'^like/$', 'blog.views.like', name='like'),
+    # url(r'^like/', 'blog.views.like'),
 	url(r'^$', 'blog.views.index'),
 
 
